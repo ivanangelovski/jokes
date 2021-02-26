@@ -2,6 +2,8 @@ package com.intec.jokes;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,11 +17,14 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class MainController {
 
+     @Autowired
+     Environment env;
+
      @GetMapping("/")
      @ResponseBody
      public String index(HttpServletRequest request) {
           log.info("in home control     local: " + request.getLocalAddr());
           log.info("in home control    remote: " + request.getRemoteAddr());
-          return "hello";
+          return "hello with [" + env.getProperty("secretino") + "]";
      }
 }
