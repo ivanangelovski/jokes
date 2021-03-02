@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.RestTemplate;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -26,5 +27,19 @@ public class MainController {
           log.info("in home control     local: " + request.getLocalAddr());
           log.info("in home control    remote: " + request.getRemoteAddr());
           return "hello with [" + env.getProperty("secretino") + "]";
+     }
+
+     @GetMapping("/message")
+     @ResponseBody
+     public String message(HttpServletRequest request) {
+
+          log.info("in message control     local: " + request.getLocalAddr());
+          log.info("in message control    remote: " + request.getRemoteAddr());
+
+          RestTemplate restTemplate = new RestTemplate();
+
+          String result = restTemplate.getForEntity(env.getProperty("alt.service.url"), String.class).getBody();
+
+          return result;
      }
 }
