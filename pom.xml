@@ -11,17 +11,20 @@
      </parent>
      <groupId>com.intec</groupId>
      <artifactId>jokes</artifactId>
-     <version>0.0.1-SNAPSHOT</version>
+     <version>1</version>
      <name>jokes</name>
      <description>Demo project for Spring Boot</description>
      <properties>
           <java.version>11</java.version>
+          <jar.finalName>jokes</jar.finalName>
      </properties>
+
+
      <dependencies>
-          <!-- <dependency>
+          <dependency>
                <groupId>org.springframework.boot</groupId>
                <artifactId>spring-boot-starter-data-jpa</artifactId>
-          </dependency> -->
+          </dependency>
           <dependency>
                <groupId>org.springframework.boot</groupId>
                <artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -41,6 +44,12 @@
                <artifactId>spring-boot-starter-test</artifactId>
                <scope>test</scope>
           </dependency>
+
+          <dependency>
+               <groupId>com.ibm.db2</groupId>
+               <artifactId>jcc</artifactId>
+               <version>11.5.0.0</version>
+          </dependency>
      </dependencies>
 
      <build>
@@ -55,7 +64,9 @@
                                    <artifactId>lombok</artifactId>
                               </exclude>
                          </excludes>
+                         <finalName>jokes</finalName>
                     </configuration>
+
                </plugin>
           </plugins>
      </build>
