@@ -17,9 +17,9 @@ public class DocumentService {
           // dr.save(new Document(1, "doc1"));
      }
 
-     public void saveDoc(String name) {
-          Document doc = new Document();
-          doc.setName(name);
+     public void saveDoc(Integer id, String name) {
+          Document doc = new Document(id, name);
+
           dr.save(doc);
      }
 

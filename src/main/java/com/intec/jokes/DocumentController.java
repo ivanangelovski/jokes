@@ -1,5 +1,7 @@
 package com.intec.jokes;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,12 +18,12 @@ public class DocumentController {
      DocumentService docService;
 
      @PostMapping("save")
-     public void saveDoc(@RequestParam String name) {
-          docService.saveDoc(name);
+     public void saveDoc(@RequestParam String name, @RequestParam Integer id) {
+          docService.saveDoc(id, name);
      }
 
      @GetMapping("list")
-     public void listDocs() {
-          docService.getDocs();
+     public List<Document> listDocs() {
+          return docService.getDocs();
      }
 }
